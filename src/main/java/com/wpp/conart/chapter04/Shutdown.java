@@ -7,12 +7,15 @@ import java.util.concurrent.TimeUnit;
  */
 public class Shutdown {
     public static void main(String[] args) throws Exception {
+
         Runner one = new Runner();
         Thread countThread = new Thread(one, "CountThread");
         countThread.start();
+
         // ˯��1�룬main�̶߳�CountThread�����жϣ�ʹCountThread�ܹ���֪�ж϶�����
         TimeUnit.SECONDS.sleep(1);
         countThread.interrupt();
+
         Runner two = new Runner();
         countThread = new Thread(two, "CountThread");
         countThread.start();

@@ -9,6 +9,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * 10-16
  */
 public class Cache {
+//    map作为cache数据
     private static final Map<String, Object>    map = new HashMap<String, Object>();
     private static final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
     private static final Lock                   r   = rwl.readLock();

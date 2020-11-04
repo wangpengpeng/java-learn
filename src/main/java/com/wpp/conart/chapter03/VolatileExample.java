@@ -1,5 +1,9 @@
 package com.wpp.conart.chapter03;
 
+
+import org.junit.runner.notification.RunListener;
+
+
 class VolatileExample {
     int              a    = 0;
     volatile boolean flag = false;

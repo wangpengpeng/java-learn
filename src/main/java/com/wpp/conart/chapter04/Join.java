@@ -4,9 +4,11 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 6-13
+ * 按照线程顺序停止相关服务
  */
 public class Join {
     public static void main(String[] args) throws Exception {
+
         Thread previous = Thread.currentThread();
         for (int i = 0; i < 10; i++) {
             // ÿ���߳�ӵ��ǰһ���̵߳����ã���Ҫ�ȴ�ǰһ���߳���ֹ�����ܴӵȴ��з���

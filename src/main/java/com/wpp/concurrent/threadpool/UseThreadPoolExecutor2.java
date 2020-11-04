@@ -12,7 +12,8 @@ public class UseThreadPoolExecutor2 implements Runnable{
 		try {
 			int temp = count.incrementAndGet();
 			System.out.println("任务" + temp);
-			Thread.sleep(2000);
+			Thread.sleep(3000);
+			System.out.println("任务" + temp);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -27,14 +28,23 @@ public class UseThreadPoolExecutor2 implements Runnable{
 		ExecutorService executor  = new ThreadPoolExecutor(
 					5, 		//core
 					10, 	//max
-					120L, 	//2fenzhong
+					30L, 	//2分钟，
 					TimeUnit.SECONDS,
-					queue);
-		
-		for(int i = 0 ; i < 20; i++){
-			executor.execute(new UseThreadPoolExecutor2());
+					queue,
+				    new MyRejected());
+
+		try {
+			for (int i = 0; i < 200; i++) {
+				executor.execute(new UseThreadPoolExecutor2());
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			executor.shutdown();
 		}
+
 		Thread.sleep(1000);
+
 		System.out.println("queue size:" + queue.size());		//10
 		Thread.sleep(2000);
 

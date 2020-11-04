@@ -4,6 +4,8 @@
  */
 package com.wpp.conart.chapter02;
 
+import com.wpp.conart.chapter04.Profiler;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -22,7 +24,10 @@ public class Counter {
 
     public static void main(String[] args) {
 
+
+        Profiler.begin();
         final Counter cas = new Counter();
+
         List<Thread> ts = new ArrayList<Thread>(600);
 
         long start = System.currentTimeMillis();
@@ -38,6 +43,7 @@ public class Counter {
             });
             ts.add(t);
         }
+        //先把线程放到list，在遍历重新启动
         for (Thread t : ts) {
             t.start();
 
@@ -53,7 +59,12 @@ public class Counter {
         }
         System.out.println(cas.i);
         System.out.println(cas.atomicI.get());
+
+
+        System.out.println("日志停止：" +  Profiler.end());
         System.out.println(System.currentTimeMillis() - start);
+
+
     }
 
     /**

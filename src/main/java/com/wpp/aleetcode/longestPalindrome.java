@@ -19,6 +19,7 @@ class longestPalindrome {//典型暴力枚举法，显然超时
         }else
             return false;
     }
+
     public static String longestPalindrome2(String s) {
         int len=s.length();
         if(len<2)
@@ -42,6 +43,7 @@ class longestPalindrome {//典型暴力枚举法，显然超时
 
     public static LinkedList<String> longestPalindrome3(String s) {
         LinkedList<String> result = new LinkedList<String>();
+
         int len=s.length();
         if(len<2) {
             result.add(s);

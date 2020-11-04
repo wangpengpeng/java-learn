@@ -6,6 +6,8 @@ import java.lang.management.ThreadMXBean;
 
 /**
  * 6-1
+ *
+ * 查看总共有多少线程
  */
 public class MultiThread {
 
